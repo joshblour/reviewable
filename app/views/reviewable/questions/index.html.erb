@@ -1,0 +1,21 @@
+<h2>Questions</h2>
+
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th>Question text</th>
+      <th>Question type</th>
+      <th>Enabled</th>
+      <th>Updated at</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render @questions %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Question', new_question_path, class: 'btn btn-primary' %>

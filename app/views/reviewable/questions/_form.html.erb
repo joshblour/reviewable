@@ -1,0 +1,28 @@
+<div class='row'>
+  <div class='col-sm-6'>
+    <%= simple_form_for @question do |f| %>
+      <%= f.input :question_text %>
+      <%= f.input :slug %>
+      <%= f.input :question_type, collection: Reviewable::Question::TYPES %>
+      <div class='hidden_field select'>
+        <%= f.input :answer_options_string, hint: 'pipe separated. e.g. good|bad|ugly' %>
+      </div>
+      <div class='hidden_field integer'>
+        <%= f.input :answer_min %>
+        <%= f.input :answer_max %>
+      </div>
+      <%= f.input :enabled %>  
+      <%= f.button :submit, class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
+
+<script>
+$('#question_question_type').on('change', function() {
+  $('.hidden_field').hide();
+  $('.hidden_field.' + this.value).show();
+  
+});
+  
+$('#question_question_type').trigger('change');
+</script>

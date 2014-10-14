@@ -1,0 +1,256 @@
+  [1m[36m (21.1ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.3ms)[0m  select sqlite_version(*)
+  [1m[36m (1.2ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateReviewableReviews (20141013142552)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateReviewableReviews (20141013142552)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to EnableUuidOsspExtension (20141013142401)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141013142401"]]
+  [1m[35m (33.5ms)[0m  commit transaction
+Migrating to CreateReviewableReviews (20141013142552)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (19.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (16.1ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to EnableUuidOsspExtension (20141013142401)
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36mSQL (15.7ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20141013142401"]]
+  [1m[35m (16.5ms)[0m  COMMIT
+Migrating to CreateReviewableReviews (20141013142552)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (280.8ms)[0m  CREATE EXTENSION IF NOT EXISTS "uuid-ossp"
+  [1m[36m (13.5ms)[0m  [1mCREATE TABLE "reviewable_reviews" ("id" serial primary key, "reviewable_id" integer, "reviewable_type" character varying(255), "reviewer_id" integer, "reviewer_type" character varying(255), "uuid" uuid DEFAULT uuid_generate_v4(), "results" json, "submitted_at" timestamp, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (1.8ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141013142552"]]
+  [1m[36m (1.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (6.4ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateReviewableReviews (20141013142552)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (26.9ms)[0m  DROP TABLE "reviewable_reviews"
+  [1m[36mSQL (7.4ms)[0m  [1mDROP EXTENSION IF EXISTS "uuid-ossp" CASCADE[0m
+  [1m[35mSQL (31.8ms)[0m  DELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20141013142552'
+  [1m[36m (27.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.4ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateReviewableReviews (20141013142552)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (71.7ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "uuid-ossp"[0m
+  [1m[35m (95.7ms)[0m  CREATE TABLE "reviewable_reviews" ("id" serial primary key, "reviewable_object_id" integer, "reviewable_object_type" character varying(255), "reviewer_id" integer, "reviewer_type" character varying(255), "uuid" uuid DEFAULT uuid_generate_v4(), "results" json, "submitted_at" timestamp, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20141013142552"]]
+  [1m[35m (25.6ms)[0m  COMMIT
+Migrating to CreateReviewableQuestions (20141013145632)
+  [1m[36m (38.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (67.0ms)[0m  CREATE TABLE "reviewable_questions" ("id" serial primary key, "text" character varying(255), "enabled" boolean, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20141013145632"]]
+  [1m[35m (16.0ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateReviewableQuestions (20141013145632)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (1.4ms)[0m  DROP TABLE "reviewable_questions"
+  [1m[36mSQL (0.5ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20141013145632'[0m
+  [1m[35m (54.1ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateProducts (20141013173317)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (39.6ms)[0m  [1mCREATE TABLE "products" ("id" serial primary key, "title" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (29.9ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141013173317"]]
+  [1m[36m (26.9ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.4ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20141013174327)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (19.9ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141013174327"]]
+  [1m[36m (15.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.6ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (2.4ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (2.7ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to EnableUuidOsspExtension (20141013142401)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20141013142401"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+Migrating to CreateReviewableReviews (20141013142552)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (31.4ms)[0m  CREATE EXTENSION IF NOT EXISTS "uuid-ossp"
+  [1m[36m (20.6ms)[0m  [1mCREATE TABLE "reviewable_reviews" ("id" serial primary key, "reviewable_object_id" integer, "reviewable_object_type" character varying(255), "reviewer_id" integer, "reviewer_type" character varying(255), "uuid" uuid DEFAULT uuid_generate_v4(), "results" json DEFAULT '{}', "submitted_at" timestamp, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141013142552"]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+Migrating to CreateReviewableQuestions (20141013145632)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (3.7ms)[0m  [1mCREATE TABLE "reviewable_questions" ("id" serial primary key, "question_text" character varying(255), "question_type" character varying(255), "slug" character varying(255), "answer_options" character varying(255)[], "answer_min" integer, "answer_max" integer, "enabled" boolean, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141013145632"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreateProducts (20141013173317)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (2.0ms)[0m  [1mCREATE TABLE "products" ("id" serial primary key, "title" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141013173317"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to CreateUsers (20141013174327)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (2.8ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141013174327"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.5ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (122.4ms)[0m  [1mDROP DATABASE IF EXISTS "reviewable_dummy_development"[0m
+  [1m[35m (269.1ms)[0m  CREATE DATABASE "reviewable_dummy_development" ENCODING = 'unicode'
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35mSQL (3.9ms)[0m  CREATE EXTENSION IF NOT EXISTS "uuid-ossp"
+  [1m[36m (4.7ms)[0m  [1mCREATE TABLE "products" ("id" serial primary key, "title" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (4.0ms)[0m  CREATE TABLE "reviewable_questions" ("id" serial primary key, "question_text" character varying(255), "question_type" character varying(255), "slug" character varying(255), "answer_options" character varying(255)[], "answer_min" integer, "answer_max" integer, "enabled" boolean, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (4.5ms)[0m  [1mCREATE TABLE "reviewable_reviews" ("id" serial primary key, "reviewable_object_id" integer, "reviewable_object_type" character varying(255), "reviewer_id" integer, "reviewer_type" character varying(255), "uuid" uuid DEFAULT uuid_generate_v4(), "results" json DEFAULT '{}', "submitted_at" timestamp, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (2.3ms)[0m  CREATE TABLE "users" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (0.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (1.6ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (0.3ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20141013174327')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20141013173317')[0m
+  [1m[36m (32.7ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (80.5ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to EnableUuidOsspExtension (20141013142401)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (15.5ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20141013142401"]]
+  [1m[35m (15.6ms)[0m  COMMIT
+Migrating to CreateReviewableReviews (20141013142552)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (50.9ms)[0m  CREATE EXTENSION IF NOT EXISTS "uuid-ossp"
+  [1m[36m (17.2ms)[0m  [1mCREATE TABLE "reviewable_reviews" ("id" serial primary key, "reviewable_object_id" integer, "reviewable_object_type" character varying(255), "reviewer_id" integer, "reviewer_type" character varying(255), "uuid" uuid DEFAULT uuid_generate_v4(), "results" json, "submitted_at" timestamp, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141013142552"]]
+  [1m[36m (16.2ms)[0m  [1mCOMMIT[0m
+Migrating to CreateReviewableQuestions (20141013145632)
+  [1m[35m (15.5ms)[0m  BEGIN
+  [1m[36m (59.1ms)[0m  [1mCREATE TABLE "reviewable_questions" ("id" serial primary key, "question_text" character varying(255), "question_type" character varying(255), "slug" character varying(255), "answer_options" character varying(255)[], "answer_min" integer, "answer_max" integer, "enabled" boolean, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141013145632"]]
+  [1m[36m (20.1ms)[0m  [1mCOMMIT[0m
+Migrating to CreateProducts (20141013173317)
+  [1m[35m (15.7ms)[0m  BEGIN
+  [1m[36m (18.7ms)[0m  [1mCREATE TABLE "products" ("id" serial primary key, "title" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141013173317"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreateUsers (20141013174327)
+  [1m[35m (14.6ms)[0m  BEGIN
+  [1m[36m (2.8ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141013174327"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.6ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (122.6ms)[0m  [1mDROP DATABASE IF EXISTS "reviewable_dummy_development"[0m
+  [1m[35m (248.9ms)[0m  CREATE DATABASE "reviewable_dummy_development" ENCODING = 'unicode'
+  [1m[36mSQL (0.6ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35mSQL (3.8ms)[0m  CREATE EXTENSION IF NOT EXISTS "uuid-ossp"
+  [1m[36m (4.4ms)[0m  [1mCREATE TABLE "products" ("id" serial primary key, "title" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (3.6ms)[0m  CREATE TABLE "reviewable_questions" ("id" serial primary key, "question_text" character varying(255), "question_type" character varying(255), "slug" character varying(255), "answer_options" character varying(255)[], "answer_min" integer, "answer_max" integer, "enabled" boolean, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (4.3ms)[0m  [1mCREATE TABLE "reviewable_reviews" ("id" serial primary key, "reviewable_object_id" integer, "reviewable_object_type" character varying(255), "reviewer_id" integer, "reviewer_type" character varying(255), "uuid" uuid DEFAULT uuid_generate_v4(), "results" json, "submitted_at" timestamp, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (2.2ms)[0m  CREATE TABLE "users" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (1.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (1.3ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (0.3ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20141013174327')
+  [1m[36m (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20141013173317')[0m
+  [1m[36m (0.5ms)[0m  [1mSELECT "reviewable_questions"."id" FROM "reviewable_questions"  WHERE "reviewable_questions"."enabled" = 't'[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "reviewable_reviews" ("created_at", "results", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2014-10-14 10:34:26.308776"], ["results", "{}"], ["updated_at", "2014-10-14 10:34:26.308776"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36mReviewable::Review Load (41.7ms)[0m  [1mSELECT  "reviewable_reviews".* FROM "reviewable_reviews"  WHERE "reviewable_reviews"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[36m (704.3ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (125.5ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (16.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to EnableUuidOsspExtension (20141013142401)
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36mSQL (38.7ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20141013142401"]]
+  [1m[35m (62.4ms)[0m  COMMIT
+Migrating to CreateReviewableReviews (20141013142552)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (688.3ms)[0m  CREATE EXTENSION IF NOT EXISTS "uuid-ossp"
+  [1m[36m (278.0ms)[0m  [1mCREATE TABLE "reviewable_reviews" ("id" serial primary key, "reviewable_object_id" integer, "reviewable_object_type" character varying(255), "reviewer_id" integer, "reviewer_type" character varying(255), "uuid" uuid DEFAULT uuid_generate_v4(), "results" json, "submitted_at" timestamp, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141013142552"]]
+  [1m[36m (69.0ms)[0m  [1mCOMMIT[0m
+Migrating to CreateReviewableQuestions (20141013145632)
+  [1m[35m (16.6ms)[0m  BEGIN
+  [1m[36m (59.4ms)[0m  [1mCREATE TABLE "reviewable_questions" ("id" serial primary key, "question_text" character varying(255), "question_type" character varying(255), "slug" character varying(255), "answer_options" character varying(255), "answer_min" integer, "answer_max" integer, "enabled" boolean, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141013145632"]]
+  [1m[36m (37.4ms)[0m  [1mCOMMIT[0m
+Migrating to CreateProducts (20141013173317)
+  [1m[35m (16.4ms)[0m  BEGIN
+  [1m[36m (48.6ms)[0m  [1mCREATE TABLE "products" ("id" serial primary key, "title" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141013173317"]]
+  [1m[36m (37.3ms)[0m  [1mCOMMIT[0m
+Migrating to CreateUsers (20141013174327)
+  [1m[35m (15.5ms)[0m  BEGIN
+  [1m[36m (70.8ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141013174327"]]
+  [1m[36m (26.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.5ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (240.0ms)[0m  [1mDROP DATABASE IF EXISTS "reviewable_dummy_development"[0m
+  [1m[35m (8575.9ms)[0m  CREATE DATABASE "reviewable_dummy_development" ENCODING = 'unicode'
+  [1m[36mSQL (0.4ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35mSQL (20.4ms)[0m  CREATE EXTENSION IF NOT EXISTS "uuid-ossp"
+  [1m[36m (68.4ms)[0m  [1mCREATE TABLE "products" ("id" serial primary key, "title" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (52.7ms)[0m  CREATE TABLE "reviewable_questions" ("id" serial primary key, "question_text" character varying(255), "question_type" character varying(255), "slug" character varying(255), "answer_options" character varying(255), "answer_min" integer, "answer_max" integer, "enabled" boolean, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (53.6ms)[0m  [1mCREATE TABLE "reviewable_reviews" ("id" serial primary key, "reviewable_object_id" integer, "reviewable_object_type" character varying(255), "reviewer_id" integer, "reviewer_type" character varying(255), "uuid" uuid DEFAULT uuid_generate_v4(), "results" json, "submitted_at" timestamp, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (36.5ms)[0m  CREATE TABLE "users" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (16.5ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (42.3ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (0.8ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (16.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20141013174327')
+  [1m[36m (32.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20141013173317')[0m
+  [1m[36m (3.2ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (1.8ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to EnableUuidOsspExtension (20141013142401)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (15.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20141013142401"]]
+  [1m[35m (15.5ms)[0m  COMMIT
+Migrating to CreateReviewableReviews (20141013142552)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (3.7ms)[0m  CREATE EXTENSION IF NOT EXISTS "uuid-ossp"
+  [1m[36m (5.3ms)[0m  [1mCREATE TABLE "reviewable_reviews" ("id" serial primary key, "reviewable_object_id" integer, "reviewable_object_type" character varying(255), "reviewer_id" integer, "reviewer_type" character varying(255), "uuid" uuid DEFAULT uuid_generate_v4(), "results" json, "submitted_at" timestamp, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141013142552"]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+Migrating to CreateReviewableQuestions (20141013145632)
+  [1m[35m (0.8ms)[0m  BEGIN
+  [1m[36m (4.6ms)[0m  [1mCREATE TABLE "reviewable_questions" ("id" serial primary key, "question_text" character varying(255), "question_type" character varying(255), "slug" character varying(255), "answer_options_string" character varying(255), "answer_min" integer, "answer_max" integer, "enabled" boolean, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141013145632"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreateProducts (20141013173317)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (2.9ms)[0m  [1mCREATE TABLE "products" ("id" serial primary key, "title" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141013173317"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to CreateUsers (20141013174327)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (2.9ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141013174327"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (134.0ms)[0m  [1mDROP DATABASE IF EXISTS "reviewable_dummy_development"[0m
+  [1m[35m (1580.9ms)[0m  CREATE DATABASE "reviewable_dummy_development" ENCODING = 'unicode'
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35mSQL (19.1ms)[0m  CREATE EXTENSION IF NOT EXISTS "uuid-ossp"
+  [1m[36m (65.4ms)[0m  [1mCREATE TABLE "products" ("id" serial primary key, "title" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (51.5ms)[0m  CREATE TABLE "reviewable_questions" ("id" serial primary key, "question_text" character varying(255), "question_type" character varying(255), "slug" character varying(255), "answer_options_string" character varying(255), "answer_min" integer, "answer_max" integer, "enabled" boolean, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (60.1ms)[0m  [1mCREATE TABLE "reviewable_reviews" ("id" serial primary key, "reviewable_object_id" integer, "reviewable_object_type" character varying(255), "reviewer_id" integer, "reviewer_type" character varying(255), "uuid" uuid DEFAULT uuid_generate_v4(), "results" json, "submitted_at" timestamp, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (35.3ms)[0m  CREATE TABLE "users" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (16.7ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (33.7ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (0.4ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (15.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20141013174327')
+  [1m[36m (31.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20141013173317')[0m
+  [1m[36m (5074.8ms)[0m  [1mDROP DATABASE IF EXISTS "reviewable_dummy_development"[0m
+PG::ObjectInUse: ERROR:  database "reviewable_dummy_development" is being accessed by other users
+DETAIL:  There are 2 other sessions using the database.
+: DROP DATABASE IF EXISTS "reviewable_dummy_development"

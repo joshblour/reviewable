@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dummy</title>
+  <link data-turbolinks-track="true" href="/assets/application.css" media="all" rel="stylesheet" />
+  <script data-turbolinks-track="true" src="/assets/application.js"></script>
+  
+</head>
+<body>
+
+<h2>New Question</h2>
+
+<form accept-charset="UTF-8" action="/reviewable/questions" class="simple_form new_question" id="new_question" method="post"><div style="display:none"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+  <div class="input string required question_question_text"><label class="string required" for="question_question_text"><abbr title="required">*</abbr> Question text</label><input aria-required="true" class="string required" id="question_question_text" maxlength="255" name="question[question_text]" required="required" size="255" type="text" /></div>
+  <div class="input string required question_question_type"><label class="string required" for="question_question_type"><abbr title="required">*</abbr> Question type</label><input aria-required="true" class="string required" id="question_question_type" maxlength="255" name="question[question_type]" required="required" size="255" type="text" /></div>
+  <div class="input string required question_slug"><label class="string required" for="question_slug"><abbr title="required">*</abbr> Slug</label><input aria-required="true" class="string required" id="question_slug" maxlength="255" name="question[slug]" required="required" size="255" type="text" /></div>
+  <div class="input string optional question_answer_options_string"><label class="string optional" for="question_answer_options_string">Answer options string</label><input class="string optional" id="question_answer_options_string" maxlength="255" name="question[answer_options_string]" size="255" type="text" /></div>
+  <div class="input integer optional question_answer_min"><label class="integer optional" for="question_answer_min">Answer min</label><input class="numeric integer optional" id="question_answer_min" name="question[answer_min]" step="1" type="number" /></div>
+  <div class="input integer optional question_answer_max"><label class="integer optional" for="question_answer_max">Answer max</label><input class="numeric integer optional" id="question_answer_max" name="question[answer_max]" step="1" type="number" /></div>
+  <div class="input boolean optional question_enabled"><input name="question[enabled]" type="hidden" value="0" /><input class="boolean optional" id="question_enabled" name="question[enabled]" type="checkbox" value="1" /><label class="boolean optional" for="question_enabled">Enabled</label></div>
+</form>
+
+</body>
+</html>
