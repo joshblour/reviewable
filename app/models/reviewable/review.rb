@@ -15,6 +15,10 @@ module Reviewable
       results.slice(*enabled_ids)
     end
     
+    def submitted?
+      submitted_at.present?
+    end
+    
     private
     
     def build_default_result

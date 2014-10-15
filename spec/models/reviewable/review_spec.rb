@@ -52,6 +52,16 @@ module Reviewable
       expect(review.sanitized_results.keys).to match_array Question.enabled.pluck(:id).map(&:to_s)
     end
     
+    it 'returns true if review is submitted' do
+      review = create(:review, :submitted)
+      expect(review.submitted?).to be true
+    end
+    
+    it 'returns false if review is unsubmitted' do
+      review = create(:review, :unsubmitted)
+      expect(review.submitted?).to be false
+    end
+    
     pending 'validates integer answer within range'
     
     pending 'returns rating average (int questions only) for a collection of records'
