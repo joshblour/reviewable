@@ -11,7 +11,7 @@ module Reviewable
         include Reviewable::ActsAsReviewable::LocalInstanceMethods
         
         has_many :reviews, as: :reviewable_object, class_name: 'Reviewable::Review'
-        has_many :reviewers, as: :reviewer, through: :reviews
+        # has_many :reviewers, through: :reviews
                 
         accepts_nested_attributes_for :reviews, allow_destroy: true
       end

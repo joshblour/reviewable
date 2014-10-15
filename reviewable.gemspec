@@ -7,11 +7,10 @@ require "reviewable/version"
 Gem::Specification.new do |s|
   s.name        = "reviewable"
   s.version     = Reviewable::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of Reviewable."
-  s.description = "TODO: Description of Reviewable."
+  s.authors     = ["Yonah forst"]
+  s.email       = ["yonaforst@hotmail.com"]
+  s.summary     = "review objects"
+  s.description = "lets you create reviews for polymorphic objects"
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]

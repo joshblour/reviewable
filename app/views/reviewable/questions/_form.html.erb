@@ -18,11 +18,12 @@
 </div>
 
 <script>
-$('#question_question_type').on('change', function() {
-  $('.hidden_field').hide();
-  $('.hidden_field.' + this.value).show();
+  if (typeof jQuery != 'undefined') {  
+    $('#question_question_type').on('change', function() {
+      $('.hidden_field').hide();
+      $('.hidden_field.' + this.value).show(); 
+    });
   
-});
-  
-$('#question_question_type').trigger('change');
+    $('#question_question_type').trigger('change');
+  }
 </script>
