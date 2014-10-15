@@ -8,14 +8,28 @@ module Reviewable
       questions += create_list(:question, 5, :disabled)
     end
     
+    
     after(:all) do
       Question.destroy_all
     end
     
+    let(:valid_attributes) do
+      Question.enabled.pluck(:id).each_with_index.inject({}) do |hash, (id, i)|
+        hash[i] = {question_id: id, answer: rand(5).to_s}
+        hash
+      end
+    end
+    
     it "creates a review with all default enabled questions" do
       review = Review.create
-      expect(review.results.keys).to match_array Question.enabled.pluck(:id).map(&:to_s)
-      expect(review.results.values.uniq).to eq [""]
+      
+      expect(review.results.map {|r| r['question_id']}).to match_array Question.enabled.pluck(:id)
+      expect(review.results.map {|r| r['answer']}.uniq).to match_array [""]
+    end
+    
+    it "sets results as nested_attributes" do
+      review = Review.create(results_attributes: valid_attributes)
+      expect(review.results).to match_array valid_attributes.values.map(&:stringify_keys)
     end
     
     it "generates a uuid on create" do

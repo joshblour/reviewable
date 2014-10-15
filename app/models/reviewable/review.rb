@@ -19,10 +19,24 @@ module Reviewable
       submitted_at.present?
     end
     
+    def results_attributes= results_attributes
+      self.results = results_attributes.values.map {|v| v.stringify_keys.slice('question_id', 'answer')}
+    end
+    
+    def answer_to_question id
+      result = results.detect {|r| r['question_id'] == id}
+      result['answer'] if result
+    end
+    
     private
     
     def build_default_result
-      self.results ||= Question.enabled.pluck(:id).inject({}) {|h, k| h[k] = ''; h }
+      self.results ||= Question.enabled.pluck(:id).map do |id|
+        {
+          question_id: id,
+          answer: ''
+        }
+      end
     end
   end
 end

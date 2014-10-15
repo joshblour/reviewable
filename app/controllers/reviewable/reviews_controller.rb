@@ -43,7 +43,7 @@ module Reviewable
     private 
     
     def review_params
-      params.require(:review).permit(:review_text, :review_type, :slug, :answer_min, :answer_max, :enabled, :answer_options_string )
+      params.require(:review).permit(results: [:question_id, :answer], results_attributes: [:question_id, :answer], :submitted_at)
     end
     
     def load_review
