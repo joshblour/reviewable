@@ -20,7 +20,7 @@ module Reviewable
     end
     
     def answer_to_question id
-      result = results.detect {|r| r['question_id'] == id}
+      result = results.detect {|r| r['question_id'] == id} if results.is_a? Array
       result['answer'] if result
     end
 
