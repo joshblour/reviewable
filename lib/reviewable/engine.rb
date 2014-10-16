@@ -1,4 +1,5 @@
 require 'reviewable/acts_as_reviewable'
+require 'nested_store_attributes'
 require 'simple_form'
 
 module Reviewable

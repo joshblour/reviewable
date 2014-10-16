@@ -20,13 +20,6 @@ module Reviewable
       end
     end
     
-    it "creates a review with all default enabled questions" do
-      review = Review.create
-      
-      expect(review.results.map {|r| r['question_id']}).to match_array Question.enabled.pluck(:id)
-      expect(review.results.map {|r| r['answer']}.uniq).to match_array [""]
-    end
-    
     it "sets results as nested_attributes" do
       review = Review.create(results_attributes: valid_attributes)
       expect(review.results).to match_array valid_attributes.values.map(&:stringify_keys)
@@ -37,7 +30,6 @@ module Reviewable
       review.reload
       expect(review.uuid).not_to be_blank
     end
-    
     
     it "returns submitted reviews only" do
       submitted_reviews = create_list(:review, 5, :submitted)

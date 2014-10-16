@@ -19,5 +19,6 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", ">= 4.0.2"
 	s.add_dependency 'simple_form'  
   s.add_dependency "pg"
+  s.add_dependency "nested_store_attributes"
   
 end
